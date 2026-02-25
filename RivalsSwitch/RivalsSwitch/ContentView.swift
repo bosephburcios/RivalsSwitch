@@ -6,19 +6,21 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        StoryboardRootView()
+            .ignoresSafeArea()
     }
 }
 
-#Preview {
-    ContentView()
+struct StoryboardRootView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        return storyboard.instantiateInitialViewController()!
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
 }
+
